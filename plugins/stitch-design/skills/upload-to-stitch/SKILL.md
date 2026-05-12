@@ -5,6 +5,12 @@ description: >-
   ALWAYS use this skill when you need to upload visual assets or full HTML pages
   to Stitch, particularly when direct MCP tool calls fail or truncate due to
   base64 token limits.
+allowed-tools:
+  - "stitch*:*"
+  - "Bash"
+  - "Read"
+  - "Write"
+  - "web_fetch"
 ---
 
 # Upload-to-Stitch

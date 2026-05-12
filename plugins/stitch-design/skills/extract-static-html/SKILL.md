@@ -2,6 +2,12 @@
 name: stitch::extract-static-html
 description: >-
   Extract self-contained static HTML from a built web application or React components by inlining CSS and images. Use this skill whenever you need to capture a specific UI state, share a static version of a page, or prepare assets for Stitch upload, even if the user just asks to 'save the HTML' or 'mock the view'.
+allowed-tools:
+  - "stitch*:*"
+  - "Bash"
+  - "Read"
+  - "Write"
+  - "web_fetch"
 ---
 
 # Extract Static HTML
@@ -52,7 +58,7 @@ Launches headless Chrome, captures the fully rendered DOM, and produces a self-c
 
 2.  **Run the Snapshot Script**:
     ```bash
-    npx tsx .agents/skills/extract-static-html/scripts/snapshot.ts \
+    npx tsx <SKILL_DIR>/scripts/snapshot.ts \
       --url http://localhost:5173 \
       --output .stitch/home.html \
       --wait 2000
@@ -60,11 +66,11 @@ Launches headless Chrome, captures the fully rendered DOM, and produces a self-c
 
 3.  **Multiple pages** — run once per route:
     ```bash
-    npx tsx .agents/skills/extract-static-html/scripts/snapshot.ts \
+    npx tsx <SKILL_DIR>/scripts/snapshot.ts \
       --url http://localhost:5173 --output .stitch/home.html --wait 2000
-    npx tsx .agents/skills/extract-static-html/scripts/snapshot.ts \
+    npx tsx <SKILL_DIR>/scripts/snapshot.ts \
       --url http://localhost:5173/pricing --output .stitch/pricing.html --wait 2000
-    npx tsx .agents/skills/extract-static-html/scripts/snapshot.ts \
+    npx tsx <SKILL_DIR>/scripts/snapshot.ts \
       --url http://localhost:5173/dashboard --output .stitch/dashboard.html --wait 2000 --html-class dark
     ```
 
@@ -148,7 +154,7 @@ Use when you need to **interact with the page** (click buttons, fill forms, navi
 ### Quick Reference
 
 ```bash
-npx tsx .agents/skills/extract-static-html/scripts/extract_inline_html.ts \
+npx tsx <SKILL_DIR>/scripts/extract_inline_html.ts \
   --index-css src/css/App.css \
   --extra-css index.html \
   --outdir .stitch \
@@ -171,6 +177,6 @@ npx tsx .agents/skills/extract-static-html/scripts/extract_inline_html.ts \
 
 Inline local images:
 ```bash
-npx tsx .agents/skills/extract-static-html/scripts/post_process.ts \
+npx tsx <SKILL_DIR>/scripts/post_process.ts \
   .stitch/Page.html --base-dir <app-directory>
 ```
